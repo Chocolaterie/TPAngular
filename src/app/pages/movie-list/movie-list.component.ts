@@ -4,6 +4,8 @@ import {RouterLink} from '@angular/router';
 import {Movie} from '../../models/movie.model';
 import {MovieService} from '../../services/movie.service';
 
+declare const UIkit: any;
+
 /**
  * Composant Angular affichant la liste des films sous forme de cartes.
  * Récupère les données depuis un service via une API HTTP.
@@ -37,13 +39,21 @@ export class MovieListComponent {
    * Récupère la liste des films via le service MovieService.
    */
   ngOnInit(): void {
+
+    // Affiche la popup de chargement
+    this.showLoading()
+
     // Appelle l'API et met à jour la liste des films
     this.movieService.getMovies().subscribe({
       next: (apiResponse) => {
         this.movies = apiResponse.data;
+
+        this.hideLoading();
       },
       error: (err) => {
         console.error('Erreur lors du chargement des films', err);
+
+        this.hideLoading();
       }
     });
   }
@@ -60,5 +70,13 @@ export class MovieListComponent {
     if (index <= Math.floor(rating)) return 'fas fa-star';                  // étoile pleine
     else if (index - 0.5 === rating) return 'fas fa-star-half-stroke';     // demi-étoile
     else return 'far fa-star';                                               // vide
+  }
+
+  showLoading(): void {
+    UIkit.modal('#loading-modal').show();
+  }
+
+  hideLoading(): void {
+    UIkit.modal('#loading-modal').hide();
   }
 }

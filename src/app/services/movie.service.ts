@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Movie} from '../models/movie.model';
 import {ApiResponse} from '../models/api.model';
-import {Observable} from 'rxjs';
+import {delay, Observable} from 'rxjs';
 
 /**
  * Service Angular responsable de la récupération des films via l'API REST.
@@ -42,6 +42,8 @@ export class MovieService {
    * ```
    */
   getMovies(): Observable<ApiResponse<Movie[]>> {
-    return this.http.get<ApiResponse<Movie[]>>(this.baseUrl);
+    return this.http.get<ApiResponse<Movie[]>>(this.baseUrl).pipe(
+      delay(1000) // délai de 1000 ms = 1 seconde
+    );
   }
 }

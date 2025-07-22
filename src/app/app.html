@@ -5,11 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Price - UIkit 3 KickOff</title>
   <link rel="icon" href="img/favicon.ico">
-  <style>
-    .uk-container-small {
-      max-width: 1020px;
-    }
-  </style>
 </head>
 <body>
 
@@ -25,7 +20,7 @@
 </header>
 <!--/HEADER-->
 
-<router-outlet />
+<router-outlet/>
 
 <!--FOOTER-->
 <footer class="uk-section-secondary">
@@ -50,6 +45,14 @@
   </div>
 </footer>
 <!--/FOOTER-->
+
+<!--Loading Modal-->
+<div id="loading-modal" class="uk-flex-top" uk-modal="center: true; esc-close: false; bg-close: false;">
+  <div class="uk-modal-dialog uk-modal-body uk-text-center uk-margin-auto-vertical">
+    <div uk-spinner="ratio: 2"></div>
+    <p class="uk-margin-small-top">Chargement...</p>
+  </div>
+</div>
 
 </body>
 </html>
