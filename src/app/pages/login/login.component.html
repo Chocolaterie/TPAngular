@@ -1,0 +1,25 @@
+<div class="uk-flex uk-flex-center uk-flex-middle uk-background-muted uk-height-viewport">
+  <div class="uk-width-medium uk-padding-small">
+    <form>
+      <fieldset class="uk-fieldset">
+        <legend class="uk-legend">{{ 'title.login' | translate }}</legend>
+        <div class="uk-margin">
+          <div class="uk-inline uk-width-1-1">
+            <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: user"></span>
+            <input [(ngModel)]="user.email" name="email" class="uk-input uk-form-large" required placeholder="Username" type="text">
+          </div>
+        </div>
+        <div class="uk-margin">
+          <div class="uk-inline uk-width-1-1">
+            <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: lock"></span>
+            <input [(ngModel)]="user.password" name="password" class="uk-input uk-form-large" required placeholder="Password" type="password">
+          </div>
+        </div>
+
+        <div class="uk-margin">
+          <button (click)="callApi()" type="submit" class="uk-button uk-button-primary uk-button-primary uk-button-large uk-width-1-1">{{ 'btn.login' | translate }}</button>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>
